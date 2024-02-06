@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Set character set and viewport for better rendering on different devices -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Set the title of the webpage -->
+    <title>RottenAI</title>
+    <!-- Link to an external stylesheet for styling purposes -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- Main heading of the webpage -->
+      <h1>RottenAI: Because waste<br>is only a matter of taste!</h1>
+      <!-- Form for image identification -->
+      <form id="imageForm">
+        <!-- Container for image selection -->
+        <div class="image-picker">
+          <!-- Label for the image choice -->
+          <label class="image-choice" id="imageLabel">
+            <!-- Radio button for image selection -->
+            <input
+              type="radio"
+              name="chosen-image"
+              value=""
+              onchange="handleImageChange(this)"
+            />
+            <!-- Preview image element (initially hidden) -->
+            <img id="previewImage" style="display: none" />
+            <!-- Button to trigger image upload -->
+            <button type="button" onclick="uploadImage()">Upload Image</button>
+            <!-- Input field for file selection (initially hidden) -->
+            <input
+              type="file"
+              id="imageInput"
+              accept="image/*"
+              style="display: none"
+              onchange="handleFileSelect()"
+            />
+          </label>
+        </div>
+        <!-- Container for user prompt and submission -->
+        <div class="prompt-box">
+          <!-- Input field for user prompt -->
+          <label>
+            <input
+              name="prompt"
+              placeholder="Enter additional details about your food here"
+              type="text"
+              value=""
+            />
+          </label>
+          <!-- Button to submit the form -->
+          <button type="submit" onclick="submitForm()">Go</button>
+        </div>
+      </form>
+      <!-- Placeholder for displaying results -->
+      <p class="output"></p>
+    </main>
+
+    <!-- Include external scripts for Markdown processing and Base64 encoding/decoding -->
+    <script src="https://unpkg.com/markdown-it@8.4.2/dist/markdown-it.min.js"></script>
+    <script src="https://unpkg.com/base64-js@1.3.0/base64js.min.js"></script>
+    <!-- Include the main JavaScript file for the webpage -->
+    <script type="module" src="/main.js"></script>
+
+    <!-- Inline script for handling image-related functionality -->
+    <script>
+      function handleImageChange(element) {
+        // Get necessary DOM elements
+        var previewImage = document.getElementById("previewImage");
+        var imageLabel = document.getElementById("imageLabel");
+
+        // Toggle the display of preview image and image label based on radio button state
+        if (element.checked) {
+          previewImage.style.display = "inline";
+          imageLabel.style.display = "block";
+        } else {
+          previewImage.style.display = "none";
+          imageLabel.style.display = "none";
+        }
+      }
+
+      function uploadImage() {
+        // Trigger the click event of the hidden image input field
+        document.getElementById("imageInput").click();
+      }
+
+      function handleFileSelect() {
+        // Get necessary DOM elements
+        var fileInput = document.getElementById("imageInput");
+        var previewImage = document.getElementById("previewImage");
+        var imageLabel = document.getElementById("imageLabel");
+
+        // Check if a file is selected
+        if (fileInput.files && fileInput.files[0]) {
+          // Read the selected file as a data URL
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            // Display the selected image in the preview and set its value to the input field
+            previewImage.src = e.target.result;
+            previewImage.style.display = "inline";
+            imageLabel.querySelector("input").value = e.target.result;
+          };
+
+          reader.readAsDataURL(fileInput.files[0]);
+        }
+      }
+
+      function submitForm() {
+        // Get the form element and create FormData object
+        var form = document.getElementById("imageForm");
+        var formData = new FormData(form);
+
+        // Log form data entries to the console
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ": " + pair[1]);
+        }
+      }
+    </script>
+  </body>
+</html>
