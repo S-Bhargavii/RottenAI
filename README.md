@@ -1,11 +1,11 @@
 # RottenAI
-RottenAI is an AI chatbot that gives you useful advice on how to utilise "supposed" food waste effectively.
-All the user has to do is upload an image of the food that has gone bad to the bot and key in some additional details about the food (like when they bought it) into the prompt bar.
+RottenAI is an AI chatbot that gives you useful advice on how to utilise "supposed" food waste effectively. <br />
+All the user has to do is upload an image of the food that has gone bad to the bot and key in some additional details about the food (like when they bought it) into the prompt bar.<br />
 In addition to the information provided by the user through prompts- image and user prompt- the bot also uses 4 sensors (hardware connected to the pc and mounted on an arduino)- temperature, humidity, water and moisture to give the most optimised advice on whether the food is edible or not and what is the best action (cooking, composting, etc) that can be done with it.
 But wait, it is not just a text- generation bot that gives some advice.
 It is also a "chatbot" to which the user can shoot follow-up questions and have an entire conversation with about the food item they uploaded.
 The user can ask it for recipes that can still be made using the food item, how to make compost from it, more about its health dangers, etc.
-Thus, this bot is indeed an impactful first step towards reducing food waste and encouraging better food waste management among common consumers like you and me !
+Thus, this bot is indeed an impactful first step towards reducing food waste and encouraging better food waste management practices among common consumers like you and me !
 
 
 
