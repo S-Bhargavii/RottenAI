@@ -5,7 +5,7 @@ All the user has to do is upload an image of the food that has gone bad to the b
 <br />
 In addition to the information provided by the user through prompts- image and user prompt- the bot also uses 4 sensors (hardware connected to the pc and mounted on an arduino)- temperature, humidity, water and moisture to give the most optimised advice on whether the food is edible or not and what is the best action (cooking, composting, etc) that can be done with it.<br />
 <br />
-But wait, it is not just a text- generation bot that gives some advice.<br />
+But wait, it is not just a text-generation bot that gives some advice.<br />
 <br />
 It is also a "chatbot" to which the user can shoot follow-up questions and have an entire conversation with about the food item they uploaded.<br />
 <br />
