@@ -2,10 +2,12 @@
 import json
 import os
 from dotenv import load_dotenv
-from sensoroutput import sensor
+
 # Importing the generativeai module from the google package
 import google.generativeai as genai
 from flask import Flask, jsonify, request, send_file, send_from_directory
+
+from sensoroutput import sensor
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -16,6 +18,8 @@ genai.configure(api_key=API_KEY)
 
 # Create a Flask web application instance
 app = Flask(__name__)
+
+# Define the route for the root URL ("/"), serving the index.html file
 
 
 @app.route("/")
@@ -37,27 +41,24 @@ def generate_api():
                 main.py
                 '''.replace('\n', '')})
         try:
+            sensor()
             # Get JSON content from the request body
             req_body = request.get_json()
             content = req_body.get("contents")
 
             # Create a GenerativeModel instance with the specified model name
             model = genai.GenerativeModel(model_name=req_body.get("model"))
-            chat = model.start_chat(history=[])
+
             # Generate content using the model and stream the response
-            response = chat.send_message(content)
-            # model.generate_content(content, stream=True)
+            response = model.generate_content(content, stream=True)
 
             # Define a generator function for streaming the content chunks
-
             def stream():
                 for chunk in response:
                     yield 'data: %s\n\n' % json.dumps({"text": chunk.text})
 
-            # x = chat.history
-
             # Return the streamed content with the appropriate content type
-            return stream(), {'Content-Type': 'text/event-stream'},
+            return stream(), {'Content-Type': 'text/event-stream'}
 
         except Exception as e:
             # Return an error message if an exception occurs during content generation
