@@ -25,5 +25,5 @@ Setup Instructions:
 3. Run the project on localhost using terminal command- python main.py
 4. Navigate to the localhost address (outputted in the terminal) on your browser 
 
-Devpost link - https://devpost.com/software/rottenai
+Devpost link - https://devpost.com/software/rottenai <br/>
 Youtube link - https://youtu.be/7xMpGn8eAOA
