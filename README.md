@@ -26,4 +26,4 @@ Setup Instructions:
 4. Navigate to the localhost address (outputted in the terminal) on your browser 
 
 Devpost link - https://devpost.com/software/rottenai
-
+Youtube link - https://youtu.be/7xMpGn8eAOA
