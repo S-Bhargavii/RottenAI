@@ -13,6 +13,7 @@ export async function* streamGemini({
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ model, contents }),
   });
+
   yield* streamResponseChunks(response);
 }
 
